@@ -58,10 +58,13 @@ def main():
                 processed_data = preprocess_input(user_data, scaler)
                 if processed_data is not None:
                     prediction = model.predict(processed_data)
+                    prediction_proba = model.predict_proba(processed_data)
+
                     prediction_label = 'Normal' if prediction[0] == 0 else 'Abnormal (Arrhythmia)'
+                    confidence_score = prediction_proba[0][prediction[0]] * 100
 
                     st.write("## Prediction Result")
-                    st.markdown(f"<h3 style='text-align: center; color: {'green' if prediction[0] == 0 else 'red'};'>{prediction_label}</h3>", unsafe_allow_html=True)
+                    st.markdown(f"<h3 style='text-align: center; color: {'green' if prediction[0] == 0 else 'red'};'>{prediction_label} ({confidence_score:.2f}% confidence)</h3>", unsafe_allow_html=True)
 
                     if prediction[0] == 0:
                         st.image("https://i.postimg.cc/nhMj7hpL/Normal.png", caption="ECG - Normal Sinus Rhythm", use_column_width=True)
