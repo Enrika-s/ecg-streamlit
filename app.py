@@ -17,12 +17,32 @@ def preprocess_input(data, scaler):
 def main():
     st.set_page_config(page_title="ECG Classification App", page_icon="❤️", layout="centered")
 
+    # Inject custom CSS
     st.markdown("""
     <style>
     .banner {
         width: 100%;
         height: auto;
         margin-bottom: 20px;
+    }
+    .custom-title {
+        font-size: 3em;
+        color: #FF6347;
+        text-align: center;
+    }
+    .custom-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+    }
+    .custom-button:hover {
+        background-color: #45a049;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -33,7 +53,7 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    st.title("ECG Classification App")
+    st.markdown('<h1 class="custom-title">ECG Classification App</h1>', unsafe_allow_html=True)
     st.markdown("""
     Welcome to the ECG Classification App. This tool allows you to upload an ECG file in CSV format and get a classification prediction indicating whether the ECG is **Normal** or **Abnormal (Arrhythmia)**.
     """)
@@ -46,7 +66,7 @@ def main():
         with st.expander("Show Uploaded Data"):
             st.write(user_data)
 
-        if st.button('Classify'):
+        if st.button('Classify', key="classify_button"):
             with st.spinner('Analyzing data... ❤️'):
                 model, scaler = load_model()
                 processed_data = preprocess_input(user_data, scaler)
