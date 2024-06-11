@@ -38,7 +38,7 @@ def main():
         font-weight: bold;
     }
     .disclaimer-text {
-        font-size: 0.9em;
+        font-size: 0.8em;
         color: gray;
         margin-bottom: 20px;
     }
