@@ -46,42 +46,43 @@ def main():
         st.write(user_data)
 
         if st.button('Classify'):
-            model, scaler = load_model()
-            processed_data = preprocess_input(user_data, scaler)
-            if processed_data is not None:
-                prediction = model.predict(processed_data)
-                prediction_label = 'Normal' if prediction[0] == 0 else 'Abnormal (Arrhythmia)'
+            with st.spinner('Analyzing data... ❤️'):
+                model, scaler = load_model()
+                processed_data = preprocess_input(user_data, scaler)
+                if processed_data is not None:
+                    prediction = model.predict(processed_data)
+                    prediction_label = 'Normal' if prediction[0] == 0 else 'Abnormal (Arrhythmia)'
 
-                st.write("## Prediction Result")
-                st.markdown(f"<h3 style='text-align: center; color: {'green' if prediction[0] == 0 else 'red'};'>{prediction_label}</h3>", unsafe_allow_html=True)
+                    st.write("## Prediction Result")
+                    st.markdown(f"<h3 style='text-align: center; color: {'green' if prediction[0] == 0 else 'red'};'>{prediction_label}</h3>", unsafe_allow_html=True)
 
-                if prediction[0] == 0:
-                    st.image("https://i.postimg.cc/nhMj7hpL/Normal.png", caption="ECG - Normal Sinus Rhythm", use_column_width=True)
-                    st.markdown("""
-                    ### What does this mean?
-                    **Normal**: The ECG data is classified as normal, indicating that the heart rhythm appears to be regular.
+                    if prediction[0] == 0:
+                        st.image("https://i.postimg.cc/nhMj7hpL/Normal.png", caption="ECG - Normal Sinus Rhythm", use_column_width=True)
+                        st.markdown("""
+                        ### What does this mean?
+                        **Normal**: The ECG data is classified as normal, indicating that the heart rhythm appears to be regular.
 
-                    **Explanation:**
-                    - A normal ECG shows a consistent rhythm and rate, with the heart beating at a regular interval.
+                        **Explanation:**
+                        - A normal ECG shows a consistent rhythm and rate, with the heart beating at a regular interval.
 
-                    **Note:**
-                    - While a normal ECG is a positive sign, it is essential to remember that this app provides information only and not a professional medical opinion.
-                    - If you have any concerns or symptoms, please consult a healthcare professional for a comprehensive evaluation.
-                    """)
+                        **Note:**
+                        - While a normal ECG is a positive sign, it is essential to remember that this app provides information only and not a professional medical opinion.
+                        - If you have any concerns or symptoms, please consult a healthcare professional for a comprehensive evaluation.
+                        """)
+                    else:
+                        st.image("https://i.postimg.cc/br3rDK5b/Arrhythmia.png", caption="ECG - Abnormal (Arrhythmia)", use_column_width=True)
+                        st.markdown("""
+                        ### What does this mean?
+                        **Abnormal (Arrhythmia)**: The ECG data is classified as abnormal, indicating that there may be irregularities in the heart rhythm.
+                        - **Arrhythmia** refers to an irregular heart rhythm, which can be too fast, too slow, or erratic.
+                        - It is important to consult a healthcare professional for a detailed assessment and diagnosis.
+
+                        **Disclaimer:**
+                        - This app provides information only and is not a substitute for professional medical advice, diagnosis, or treatment.
+                        - Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
+                        """)
                 else:
-                    st.image("https://i.postimg.cc/br3rDK5b/Arrhythmia.png", caption="ECG - Abnormal (Arrhythmia)", use_column_width=True)
-                    st.markdown("""
-                    ### What does this mean?
-                    **Abnormal (Arrhythmia)**: The ECG data is classified as abnormal, indicating that there may be irregularities in the heart rhythm.
-                    - **Arrhythmia** refers to an irregular heart rhythm, which can be too fast, too slow, or erratic.
-                    - It is important to consult a healthcare professional for a detailed assessment and diagnosis.
-
-                    **Disclaimer:**
-                    - This app provides information only and is not a substitute for professional medical advice, diagnosis, or treatment.
-                    - Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
-                    """)
-            else:
-                st.error("An error occurred during prediction: Invalid data format")
+                    st.error("An error occurred during prediction: Invalid data format")
 
 if __name__ == "__main__":
     main()
