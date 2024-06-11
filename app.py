@@ -27,22 +27,8 @@ def main():
     }
     .custom-title {
         font-size: 3em;
-        color: #000000;
+        color: #FF6347;
         text-align: center;
-    }
-    .custom-button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border: none;
-        border-radius: 4px;
-    }
-    .custom-button:hover {
-        background-color: #45a049;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -66,7 +52,7 @@ def main():
         with st.expander("Show Uploaded Data"):
             st.write(user_data)
 
-        if st.button('Classify', key="classify_button"):
+        if st.button('Classify'):
             with st.spinner('Analyzing data... ❤️'):
                 model, scaler = load_model()
                 processed_data = preprocess_input(user_data, scaler)
