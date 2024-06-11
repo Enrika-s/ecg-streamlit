@@ -27,13 +27,11 @@ def main():
     }
     .custom-title {
         font-size: 3em;
-        color: black;
         text-align: center;
     }
     .emergency-text {
         text-align: center;
         font-size: 1em;
-        color: black;
         margin-top: 50px;
     }
     .emergency-text .highlight {
