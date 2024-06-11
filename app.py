@@ -30,6 +30,16 @@ def main():
         color: #000000;
         text-align: center;
     }
+    .emergency-text {
+        text-align: center;
+        font-size: 1.2em;
+        color: black;
+        margin-top: 50px;
+    }
+    .emergency-text .highlight {
+        color: red;
+        font-weight: bold;
+    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -93,6 +103,13 @@ def main():
                         """)
                 else:
                     st.error("An error occurred during prediction: Invalid data format")
+
+    # Inject emergency message at the bottom of the page
+    st.markdown("""
+    <div class="emergency-text">
+        If you believe you are having a heart attack or a medical emergency, call your local <span class="highlight">emergency services</span>.
+    </div>
+    """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
