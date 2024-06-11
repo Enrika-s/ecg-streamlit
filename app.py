@@ -27,7 +27,7 @@ def main():
     }
     .custom-title {
         font-size: 3em;
-        color: #FF6347;
+        color: #000000;
         text-align: center;
     }
     .custom-button {
