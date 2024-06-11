@@ -42,8 +42,9 @@ def main():
 
     if uploaded_file is not None:
         user_data = pd.read_csv(uploaded_file)
-        st.write("## Uploaded Data")
-        st.write(user_data)
+
+        with st.expander("Show Uploaded Data"):
+            st.write(user_data)
 
         if st.button('Classify'):
             with st.spinner('Analyzing data... ❤️'):
