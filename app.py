@@ -16,11 +16,18 @@ def preprocess_input(data, scaler):
 
 def show_disclaimer():
     st.markdown("""
-    <div style="background-color: #ffcccc; padding: 20px; border-radius: 10px; color: black;">
+    <div style="background-color: #ffcccc; padding: 20px; border-radius: 10px; color: black; text-align: center;">
         <p><strong>Disclaimer</strong>: This app is for educational purposes only and should not be used for medical diagnosis or treatment. Always consult with a healthcare professional for any medical concerns.</p>
+        <button id="understand-button" style="background-color: #f63366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">I Understand</button>
     </div>
+    <script>
+        document.getElementById('understand-button').onclick = function() {
+            fetch('/?understood=true', { method: 'POST' })
+                .then(response => window.location.reload());
+        };
+    </script>
     """, unsafe_allow_html=True)
-    if st.button("I Understand"):
+    if st.button("I Understand", key="internal_understand_button"):
         st.session_state.show_disclaimer = False
         st.experimental_rerun()
 
