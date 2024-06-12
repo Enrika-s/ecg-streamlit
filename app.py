@@ -72,7 +72,7 @@ def main():
             <p><strong>Disclaimer</strong>: This app is for educational purposes only and should not be used for medical diagnosis or treatment. Always consult with a healthcare professional for any medical concerns.</p>
         </div>
         """, unsafe_allow_html=True)
-        col_center = st.columns([2, 2, 2])[1]
+        col_center = st.columns([2, 1, 1])[1]
         with col_center:
             if st.button("I Understand", key="acknowledge"):
                 st.session_state.show_disclaimer = False
