@@ -90,7 +90,7 @@ def main():
             with st.expander("Show Uploaded Data"):
                 st.write(user_data)
 
-            col_center = st.columns([2, 2, 2])[1]
+            col_center = st.columns([3, 2, 3])[1]
             with col_center:
                 if st.button('Analyze my results'):
                     with st.spinner('Analyzing data... ❤️'):
