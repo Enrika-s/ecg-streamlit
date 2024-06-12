@@ -54,6 +54,10 @@ def main():
         justify-content: center;
         margin-top: 20px;
     }
+    .button-centered {
+        display: flex;
+        justify-content: center;
+    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -68,7 +72,6 @@ def main():
     Welcome to the ECG Classification App. This tool allows you to upload an ECG file in CSV format and get a classification prediction indicating whether the ECG is **Normal** or **Abnormal (Arrhythmia)**.
     """)
 
-    # Preload the model outside the spinner context
     model, scaler = load_model()
 
     if "show_disclaimer" not in st.session_state:
@@ -95,7 +98,7 @@ def main():
                 st.write(user_data)
 
             # Center the "Analyze my results" button
-            st.markdown('<div class="button-container">', unsafe_allow_html=True)
+            st.markdown('<div class="button-centered">', unsafe_allow_html=True)
             if st.button('Analyze my results'):
                 with st.spinner('Analyzing data... ❤️'):
                     processed_data = preprocess_input(user_data, scaler)
