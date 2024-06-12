@@ -45,7 +45,7 @@ def main():
         text-align: center;
         margin-bottom: 20px;
     }
-    .disclaimer-button-container, .classify-button-container {
+    .button-container {
         display: flex;
         justify-content: center;
         margin-top: 20px;
@@ -90,48 +90,50 @@ def main():
             with st.expander("Show Uploaded Data"):
                 st.write(user_data)
 
-            col_center = st.columns([3, 2, 3])[1]
-            with col_center:
-                if st.button('Analyze my results'):
-                    with st.spinner('Analyzing data... ❤️'):
-                        processed_data = preprocess_input(user_data, scaler)
-                        if processed_data is not None:
-                            prediction = model.predict(processed_data)
-                            prediction_proba = model.predict_proba(processed_data)
+            # Center the "Analyze my results" button
+            st.markdown('<div class="button-container">', unsafe_allow_html=True)
+            if st.button('Analyze my results'):
+                with st.spinner('Analyzing data... ❤️'):
+                    processed_data = preprocess_input(user_data, scaler)
+                    if processed_data is not None:
+                        prediction = model.predict(processed_data)
+                        prediction_proba = model.predict_proba(processed_data)
 
-                            prediction_label = 'Normal' if prediction[0] == 0 else 'Abnormal (Arrhythmia)'
-                            confidence_score = prediction_proba[0][prediction[0]] * 100
+                        prediction_label = 'Normal' if prediction[0] == 0 else 'Abnormal (Arrhythmia)'
+                        confidence_score = prediction_proba[0][prediction[0]] * 100
 
-                            st.write("## Prediction Result")
-                            st.markdown(f"<h3 style='text-align: center; color: {'green' if prediction[0] == 0 else 'red'};'>{prediction_label} ({confidence_score:.2f}% confidence)</h3>", unsafe_allow_html=True)
+                        st.markdown('</div>', unsafe_allow_html=True)  # Close the button container div
 
-                            if prediction[0] == 0:
-                                st.image("https://i.postimg.cc/nhMj7hpL/Normal.png", caption="ECG - Normal Sinus Rhythm", use_column_width=True)
-                                st.markdown("""
-                                ### What does this mean?
-                                **Normal**: The ECG data is classified as normal, indicating that the heart rhythm appears to be regular.
+                        st.write("## Prediction Result")
+                        st.markdown(f"<h3 style='text-align: center; color: {'green' if prediction[0] == 0 else 'red'};'>{prediction_label} ({confidence_score:.2f}% confidence)</h3>", unsafe_allow_html=True)
 
-                                **Explanation:**
-                                - A normal ECG shows a consistent rhythm and rate, with the heart beating at a regular interval.
+                        if prediction[0] == 0:
+                            st.image("https://i.postimg.cc/nhMj7hpL/Normal.png", caption="ECG - Normal Sinus Rhythm", use_column_width=True)
+                            st.markdown("""
+                            ### What does this mean?
+                            **Normal**: The ECG data is classified as normal, indicating that the heart rhythm appears to be regular.
 
-                                **Note:**
-                                - While a normal ECG is a positive sign, it is essential to remember that this app provides information only and not a professional medical opinion.
-                                - If you have any concerns or symptoms, please consult a healthcare professional for a comprehensive evaluation.
-                                """)
-                            else:
-                                st.image("https://i.postimg.cc/br3rDK5b/Arrhythmia.png", caption="ECG - Abnormal (Arrhythmia)", use_column_width=True)
-                                st.markdown("""
-                                ### What does this mean?
-                                **Abnormal (Arrhythmia)**: The ECG data is classified as abnormal, indicating that there may be irregularities in the heart rhythm.
-                                - **Arrhythmia** refers to an irregular heart rhythm, which can be too fast, too slow, or erratic.
-                                - It is important to consult a healthcare professional for a detailed assessment and diagnosis.
+                            **Explanation:**
+                            - A normal ECG shows a consistent rhythm and rate, with the heart beating at a regular interval.
 
-                                **Disclaimer:**
-                                - This app provides information only and is not a substitute for professional medical advice, diagnosis, or treatment.
-                                - Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
-                                """)
+                            **Note:**
+                            - While a normal ECG is a positive sign, it is essential to remember that this app provides information only and not a professional medical opinion.
+                            - If you have any concerns or symptoms, please consult a healthcare professional for a comprehensive evaluation.
+                            """)
                         else:
-                            st.error("An error occurred during prediction: Invalid data format")
+                            st.image("https://i.postimg.cc/br3rDK5b/Arrhythmia.png", caption="ECG - Abnormal (Arrhythmia)", use_column_width=True)
+                            st.markdown("""
+                            ### What does this mean?
+                            **Abnormal (Arrhythmia)**: The ECG data is classified as abnormal, indicating that there may be irregularities in the heart rhythm.
+                            - **Arrhythmia** refers to an irregular heart rhythm, which can be too fast, too slow, or erratic.
+                            - It is important to consult a healthcare professional for a detailed assessment and diagnosis.
+
+                            **Disclaimer:**
+                            - This app provides information only and is not a substitute for professional medical advice, diagnosis, or treatment.
+                            - Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
+                            """)
+                    else:
+                        st.error("An error occurred during prediction: Invalid data format")
 
     st.markdown("""
     <div class="emergency-text">
