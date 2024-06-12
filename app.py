@@ -46,13 +46,8 @@ def main():
         margin-bottom: 20px;
     }
     .disclaimer-button {
-        background-color: #f63366;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 10px;
+        display: flex;
+        justify-content: center;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -77,6 +72,7 @@ def main():
             <p><strong>Disclaimer</strong>: This app is for educational purposes only and should not be used for medical diagnosis or treatment. Always consult with a healthcare professional for any medical concerns.</p>
         </div>
         """, unsafe_allow_html=True)
+        st.markdown('<div class="disclaimer-button"><button class="disclaimer-button" onclick="document.getElementById(\'acknowledge\').click()">I Understand</button></div>', unsafe_allow_html=True)
         if st.button("I Understand", key="acknowledge"):
             st.session_state.show_disclaimer = False
             st.experimental_rerun()
