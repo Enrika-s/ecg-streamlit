@@ -92,7 +92,7 @@ def main():
 
             col_center = st.columns([2, 1, 2])[1]
             with col_center:
-                if st.button('Classify'):
+                if st.button('Analyze my results'):
                     with st.spinner('Analyzing data... ❤️'):
                         processed_data = preprocess_input(user_data, scaler)
                         if processed_data is not None:
