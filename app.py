@@ -43,7 +43,7 @@ def main():
         border-radius: 10px;
         color: black;
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
     .disclaimer-button-container {
         display: flex;
