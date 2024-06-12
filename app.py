@@ -45,9 +45,10 @@ def main():
         text-align: center;
         margin-bottom: 20px;
     }
-    .disclaimer-button-container {
+    .disclaimer-button-container, .classify-button-container {
         display: flex;
         justify-content: center;
+        margin-top: 20px;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -89,6 +90,8 @@ def main():
             with st.expander("Show Uploaded Data"):
                 st.write(user_data)
 
+            # Center the "Classify" button
+            st.markdown('<div class="classify-button-container">', unsafe_allow_html=True)
             if st.button('Classify'):
                 with st.spinner('Analyzing data... ❤️'):
                     processed_data = preprocess_input(user_data, scaler)
@@ -129,6 +132,7 @@ def main():
                             """)
                     else:
                         st.error("An error occurred during prediction: Invalid data format")
+            st.markdown('</div>', unsafe_allow_html=True)
 
     st.markdown("""
     <div class="emergency-text">
