@@ -16,9 +16,14 @@ def preprocess_input(data, scaler):
 
 def show_disclaimer():
     st.markdown("""
-    **Disclaimer**: This app is for educational purposes only and should not be used for medical diagnosis or treatment. Always consult with a healthcare professional for any medical concerns.
-    """)
-    if st.button("I Understand"):
+    <div style="background-color: #ffa8a8; padding: 20px; border-radius: 10px;">
+        <p><strong>Disclaimer</strong>: This app is for educational purposes only and should not be used for medical diagnosis or treatment. Always consult with a healthcare professional for any medical concerns.</p>
+        <div style="display: flex; justify-content: center;">
+            <button onclick="hideDisclaimer()">I Understand</button>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    if st.button("I Understand", key="understand_button"):
         st.session_state.show_disclaimer = False
 
 def main():
