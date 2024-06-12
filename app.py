@@ -14,23 +14,6 @@ def preprocess_input(data, scaler):
         return None
     return scaler.transform(data)
 
-def show_disclaimer():
-    st.markdown("""
-    <div style="background-color: #ffcccc; padding: 20px; border-radius: 10px; color: black; text-align: center;">
-        <p><strong>Disclaimer</strong>: This app is for educational purposes only and should not be used for medical diagnosis or treatment. Always consult with a healthcare professional for any medical concerns.</p>
-        <button id="understand-button" style="background-color: #f63366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">I Understand</button>
-    </div>
-    <script>
-        document.getElementById('understand-button').onclick = function() {
-            fetch('/?understood=true', { method: 'POST' })
-                .then(response => window.location.reload());
-        };
-    </script>
-    """, unsafe_allow_html=True)
-    if st.button("I Understand", key="internal_understand_button"):
-        st.session_state.show_disclaimer = False
-        st.experimental_rerun()
-
 def main():
     st.set_page_config(page_title="ECG Classification App", page_icon="❤️", layout="centered")
 
@@ -54,6 +37,23 @@ def main():
         color: red;
         font-weight: bold;
     }
+    .disclaimer-container {
+        background-color: #ffcccc;
+        padding: 20px;
+        border-radius: 10px;
+        color: black;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .disclaimer-button {
+        background-color: #f63366;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -72,7 +72,15 @@ def main():
         st.session_state.show_disclaimer = True
 
     if st.session_state.show_disclaimer:
-        show_disclaimer()
+        st.markdown("""
+        <div class="disclaimer-container">
+            <p><strong>Disclaimer</strong>: This app is for educational purposes only and should not be used for medical diagnosis or treatment. Always consult with a healthcare professional for any medical concerns.</p>
+            <button class="disclaimer-button" onclick="document.getElementById('acknowledge').click()">I Understand</button>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("I Understand", key="acknowledge"):
+            st.session_state.show_disclaimer = False
+            st.experimental_rerun()
     else:
         uploaded_file = st.file_uploader("Choose a CSV file containing ECG data", type="csv")
 
