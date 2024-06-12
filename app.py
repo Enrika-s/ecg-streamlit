@@ -16,15 +16,15 @@ def preprocess_input(data, scaler):
 
 def show_disclaimer():
     st.markdown("""
-    <div style="background-color: #ffa8a8; padding: 20px; border-radius: 10px;">
+    <div style="background-color: #ffcccc; padding: 20px; border-radius: 10px; color: black;">
         <p><strong>Disclaimer</strong>: This app is for educational purposes only and should not be used for medical diagnosis or treatment. Always consult with a healthcare professional for any medical concerns.</p>
         <div style="display: flex; justify-content: center;">
-            <button onclick="hideDisclaimer()">I Understand</button>
+            <form action="?acknowledged=true" method="post">
+                <button type="submit" style="background-color: #f63366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">I Understand</button>
+            </form>
         </div>
     </div>
     """, unsafe_allow_html=True)
-    if st.button("I Understand", key="understand_button"):
-        st.session_state.show_disclaimer = False
 
 def main():
     st.set_page_config(page_title="ECG Classification App", page_icon="❤️", layout="centered")
@@ -126,4 +126,6 @@ def main():
     """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
+    if st.experimental_get_query_params().get("acknowledged"):
+        st.session_state.show_disclaimer = False
     main()
