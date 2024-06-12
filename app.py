@@ -45,7 +45,7 @@ def main():
         text-align: center;
         margin-bottom: 20px;
     }
-    .disclaimer-button-container {
+    .button-container {
         display: flex;
         justify-content: center;
     }
@@ -72,11 +72,14 @@ def main():
             <p><strong>Disclaimer</strong>: This app is for educational purposes only and should not be used for medical diagnosis or treatment. Always consult with a healthcare professional for any medical concerns.</p>
         </div>
         """, unsafe_allow_html=True)
-        col_center = st.columns([1, 2, 1])[1]
-        with col_center:
-            if st.button("I Understand", key="acknowledge"):
-                st.session_state.show_disclaimer = False
-                st.experimental_rerun()
+        st.markdown("""
+        <div class="button-container">
+            <button onclick="document.getElementById('acknowledge').click()">I Understand</button>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("I Understand", key="acknowledge"):
+            st.session_state.show_disclaimer = False
+            st.experimental_rerun()
     else:
         uploaded_file = st.file_uploader("Choose a CSV file containing ECG data", type="csv")
 
