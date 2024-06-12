@@ -15,12 +15,14 @@ def preprocess_input(data, scaler):
     return scaler.transform(data)
 
 def show_disclaimer():
-    with st.modal("Disclaimer"):
+    with st.expander("Disclaimer"):
         st.markdown("""
         **Disclaimer**: This app is for educational purposes only and should not be used for medical diagnosis or treatment. Always consult with a healthcare professional for any medical concerns.
         """)
-        if st.button("I Understand"):
-            st.session_state.show_disclaimer = False
+        st.button("I Understand", on_click=hide_disclaimer)
+
+def hide_disclaimer():
+    st.session_state.show_disclaimer = False
 
 def main():
     st.set_page_config(page_title="ECG Classification App", page_icon="❤️", layout="centered")
