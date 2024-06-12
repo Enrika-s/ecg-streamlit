@@ -63,6 +63,9 @@ def main():
     Welcome to the ECG Classification App. This tool allows you to upload an ECG file in CSV format and get a classification prediction indicating whether the ECG is **Normal** or **Abnormal (Arrhythmia)**.
     """)
 
+    # Preload the model outside the spinner context
+    model, scaler = load_model()
+
     if "show_disclaimer" not in st.session_state:
         st.session_state.show_disclaimer = True
 
@@ -88,7 +91,6 @@ def main():
 
             if st.button('Classify'):
                 with st.spinner('Analyzing data... ❤️'):
-                    model, scaler = load_model()
                     processed_data = preprocess_input(user_data, scaler)
                     if processed_data is not None:
                         prediction = model.predict(processed_data)
