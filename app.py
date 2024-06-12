@@ -22,11 +22,11 @@ def show_disclaimer():
     """, unsafe_allow_html=True)
     if st.button("I Understand"):
         st.session_state.show_disclaimer = False
+        st.experimental_rerun()
 
 def main():
     st.set_page_config(page_title="ECG Classification App", page_icon="❤️", layout="centered")
 
-    # Inject custom CSS
     st.markdown("""
     <style>
     .banner {
@@ -117,7 +117,6 @@ def main():
                     else:
                         st.error("An error occurred during prediction: Invalid data format")
 
-    # Inject emergency message at the bottom of the page
     st.markdown("""
     <div class="emergency-text">
         If you believe you are having a heart attack or a medical emergency, call your local <span class="highlight">emergency services</span>.
