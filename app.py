@@ -19,16 +19,21 @@ def show_disclaimer():
     <div style="background-color: #ffcccc; padding: 20px; border-radius: 10px; color: black;">
         <p><strong>Disclaimer</strong>: This app is for educational purposes only and should not be used for medical diagnosis or treatment. Always consult with a healthcare professional for any medical concerns.</p>
         <div style="display: flex; justify-content: center;">
-            <button onclick="acknowledgeDisclaimer()" style="background-color: #f63366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">I Understand</button>
+            <button id="understand-button" style="background-color: #f63366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">I Understand</button>
         </div>
     </div>
+    <script>
+        document.getElementById('understand-button').onclick = function() {
+            fetch('/?understood=true', { method: 'POST' })
+                .then(response => window.location.reload());
+        };
+    </script>
     """, unsafe_allow_html=True)
-    if st.button("I Understand"):
-        st.session_state.show_disclaimer = False
 
 def main():
     st.set_page_config(page_title="ECG Classification App", page_icon="❤️", layout="centered")
 
+    # Inject custom CSS
     st.markdown("""
     <style>
     .banner {
@@ -66,6 +71,7 @@ def main():
     if "show_disclaimer" not in st.session_state:
         st.session_state.show_disclaimer = True
 
+    # Check if the disclaimer has been acknowledged
     if st.session_state.show_disclaimer:
         show_disclaimer()
     else:
@@ -119,6 +125,7 @@ def main():
                     else:
                         st.error("An error occurred during prediction: Invalid data format")
 
+    # Inject emergency message at the bottom of the page
     st.markdown("""
     <div class="emergency-text">
         If you believe you are having a heart attack or a medical emergency, call your local <span class="highlight">emergency services</span>.
@@ -126,4 +133,6 @@ def main():
     """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
+    if "understood" in st.experimental_get_query_params():
+        st.session_state.show_disclaimer = False
     main()
