@@ -72,15 +72,15 @@ def main():
         st.session_state.show_disclaimer = True
 
     if st.session_state.show_disclaimer:
+        if st.button("I Understand", key="acknowledge"):
+            st.session_state.show_disclaimer = False
+            st.experimental_rerun()
         st.markdown("""
         <div class="disclaimer-container">
             <p><strong>Disclaimer</strong>: This app is for educational purposes only and should not be used for medical diagnosis or treatment. Always consult with a healthcare professional for any medical concerns.</p>
             <button class="disclaimer-button" onclick="document.getElementById('acknowledge').click()">I Understand</button>
         </div>
         """, unsafe_allow_html=True)
-        if st.button("I Understand", key="acknowledge"):
-            st.session_state.show_disclaimer = False
-            st.experimental_rerun()
     else:
         uploaded_file = st.file_uploader("Choose a CSV file containing ECG data", type="csv")
 
