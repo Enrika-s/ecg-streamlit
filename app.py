@@ -130,7 +130,7 @@ def main():
 
     st.markdown("""
     <div class="emergency-text">
-        If you believe you are having a heart attack or a medical emergency, call your local <span class="highlight">emergency services</span>.
+        If you believe you are having a heart attack or a medical emergency, call your local <a href="https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers" class="highlight">emergency services</a>.
     </div>
     """, unsafe_allow_html=True)
 
