@@ -103,19 +103,15 @@ def main():
                         if prediction[0] == 0:
                             st.image("https://i.postimg.cc/nhMj7hpL/Normal.png", caption="ECG - Normal Sinus Rhythm", use_column_width=True)
                             st.markdown(f"""
-                            Your ECG appears **normal**.
-                            This means that your **heart rhythm appears to be consistent**, suggesting that **your heart is healthy and functioning as it should**!
-
+                            Your ECG appears normal.
+                            This means that your heart rhythm appears to be consistent, suggesting that your heart is healthy and functioning as it should!
 
                             Keep your heart healthy by:
-
-                            - Staying active and getting 150 minutes of **exercise** per week
+                            - Staying active and getting 150 minutes of exercise per week
                             - Eating heart-healthy foods
                             - Managing stress
 
-
-                            Please note: While our model has a **confidence level of {confidence_score:.2f}%** in your predicted results (read more about what that number means **here**), it does have limitations:
-
+                            Please note: While our model has a confidence level of {confidence_score:.2f}% in your predicted results (read more about what that number means here), it does have limitations:
                             - This is only one point in time - take multiple recordings to get the bigger picture of your heart function.
                             - This model uses a single or 2-lead ECG input, which allows for more flexible and convenient measurement, but means it is inherently incomplete compared to the clinical standard 12-lead ECG.
                             - If you are experiencing symptoms of a heart event or have reason to believe you are at risk of having a heart problem - see a medical professional.
@@ -124,15 +120,33 @@ def main():
                             """)
                         else:
                             st.image("https://i.postimg.cc/br3rDK5b/Arrhythmia.png", caption="ECG - Abnormal (Arrhythmia)", use_column_width=True)
-                            st.markdown("""
-                            ### What does this mean?
-                            **Abnormal (Arrhythmia)**: The ECG data is classified as abnormal, indicating that there may be irregularities in the heart rhythm.
-                            - **Arrhythmia** refers to an irregular heart rhythm, which can be too fast, too slow, or erratic.
-                            - It is important to consult a healthcare professional for a detailed assessment and diagnosis.
+                            st.markdown(f"""
+                            Your ECG appears **abnormal**.
 
-                            **Disclaimer:**
-                            - This app provides information only and is not a substitute for professional medical advice, diagnosis, or treatment.
-                            - Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
+                            This means that your **heart rhythm appears inconsistent in this measurement**, which **may be a sign of heart disease or arrhythmia**.
+
+                            **You should consult with a medical doctor for further assessment**.
+
+                            **Record the following information to help your clinician**:
+
+                            - **What symptoms prompted you to record your ECG**?
+                            - **What were you doing when these symptoms appeared, or do you believe you know what caused them**?
+                            - **Has this happened before**?
+                            - **Have you received a prior diagnosis of heart disease or had a heart event in the past**?
+                            - **Do you have a family member who has had a heart event or died of heart disease**?
+                            - **Save a copy of this ECG recording and prediction and bring it with you**!
+
+                            **Your family doctor can refer you for a full ECG assessment, or you can check your local walk-in clinic or hospital emergency room**.
+
+                            **Taking action now can have a meaningful impact on your ability to proactively manage and treat potential heart-related complications - and improve your health in both the short and long term**!
+
+                            **Please note**: While our model has a **confidence level of {confidence_score:.2f}%** in your predicted results (read more about what that number means here), it does have limitations:
+
+                            - This is only one point in time - take multiple recordings to get the bigger picture of your heart function.
+                            - This model uses a single or 2-lead ECG input, which allows for more flexible and convenient measurement, but means it is inherently incomplete compared to the clinical standard 12-lead ECG.
+                            - If you are experiencing symptoms of a heart event or have reason to believe you are at risk of having a heart problem - see a medical professional.
+
+                            While this model can be useful for capturing ECG results measured outside of a clinical setting, and predict outcomes with 99% accuracy, it cannot replace a clinical assessment by a medical professional.
                             """)
                     else:
                         st.error("An error occurred during prediction: Invalid data format")
