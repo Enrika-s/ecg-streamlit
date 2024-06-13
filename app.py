@@ -102,16 +102,25 @@ def main():
 
                         if prediction[0] == 0:
                             st.image("https://i.postimg.cc/nhMj7hpL/Normal.png", caption="ECG - Normal Sinus Rhythm", use_column_width=True)
-                            st.markdown("""
-                            ### What does this mean?
-                            **Normal**: The ECG data is classified as normal, indicating that the heart rhythm appears to be regular.
+                            st.markdown(f"""
+                            Your ECG appears **normal**.
+                            This means that your **heart rhythm appears to be consistent**, suggesting that **your heart is healthy and functioning as it should**!
 
-                            **Explanation:**
-                            - A normal ECG shows a consistent rhythm and rate, with the heart beating at a regular interval.
 
-                            **Note:**
-                            - While a normal ECG is a positive sign, it is essential to remember that this app provides information only and not a professional medical opinion.
-                            - If you have any concerns or symptoms, please consult a healthcare professional for a comprehensive evaluation.
+                            Keep your heart healthy by:
+
+                            - Staying active and getting 150 minutes of **exercise** per week
+                            - Eating heart-healthy foods
+                            - Managing stress
+
+
+                            Please note: While our model has a **confidence level of {confidence_score:.2f}%** in your predicted results (read more about what that number means **here**), it does have limitations:
+
+                            - This is only one point in time - take multiple recordings to get the bigger picture of your heart function.
+                            - This model uses a single or 2-lead ECG input, which allows for more flexible and convenient measurement, but means it is inherently incomplete compared to the clinical standard 12-lead ECG.
+                            - If you are experiencing symptoms of a heart event or have reason to believe you are at risk of having a heart problem - see a medical professional.
+
+                            While this model can be useful for capturing ECG results measured outside of a clinical setting and predicting outcomes with 99% accuracy, it cannot replace a clinical assessment by a medical professional.
                             """)
                         else:
                             st.image("https://i.postimg.cc/br3rDK5b/Arrhythmia.png", caption="ECG - Abnormal (Arrhythmia)", use_column_width=True)
