@@ -129,7 +129,7 @@ def main():
 
                             This means that your **heart rhythm appears inconsistent in this measurement**, which **may be a sign of heart disease or arrhythmia**.
 
-                            **You should consult with a medical doctor for further assessment**.
+                            <!-- **You should consult with a medical doctor for further assessment**.
 
                             **Record the following information to help your clinician**:
 
@@ -138,7 +138,7 @@ def main():
                             - **Has this happened before**?
                             - **Have you received a prior diagnosis of heart disease or had a heart event in the past**?
                             - **Do you have a family member who has had a heart event or died of heart disease**?
-                            - **Save a copy of this ECG recording and prediction and bring it with you**!
+                            - **Save a copy of this ECG recording and prediction and bring it with you**! -->
 
                             **Your family doctor can refer you for a full ECG assessment, or you can check your local walk-in clinic or hospital emergency room**.
 
