@@ -15,7 +15,7 @@ def preprocess_input(data, scaler):
     return scaler.transform(data)
 
 def main():
-    st.set_page_config(page_title="ECG Classification App", page_icon="❤️", layout="centered")
+    st.set_page_config(page_title="Heartbeat Decoder", page_icon="❤️", layout="centered")
 
     st.markdown("""
     <style>
@@ -58,9 +58,9 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown('<h1 class="custom-title">ECG Classification App</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="custom-title">Heartbeat Decoder</h1>', unsafe_allow_html=True)
     st.markdown("""
-    Welcome to the ECG Classification App. This tool allows you to upload an ECG file in CSV format and get a classification prediction indicating whether the ECG is **Normal** or **Abnormal (Arrhythmia)**.
+    Welcome to the Heartbeat Decoder. This tool allows you to upload an ECG file in CSV format and get a classification prediction indicating whether the ECG is **Normal** or **Abnormal (Arrhythmia)**.
     """)
 
     if "show_disclaimer" not in st.session_state:
