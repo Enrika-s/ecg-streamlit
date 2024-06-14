@@ -22,7 +22,7 @@ def main():
     .banner {
         width: 100%;
         height: auto;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     .custom-title {
         font-size: 3em;
