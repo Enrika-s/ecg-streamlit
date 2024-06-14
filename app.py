@@ -134,6 +134,7 @@ def main():
 
                             This means that your **heart rhythm appears inconsistent in this measurement**, which **may be a sign of heart disease or arrhythmia**.
 
+                            **Consult your family doctor or make an appointment for a full clinical ECG assessment to obtain a diagnosis. (You can bring the results of this trace with you to provide additional information to the clinician!)**
 
                             **Please note**: While our model has a **confidence level of {confidence_score:.2f}%** in your predicted results, it does have limitations:
 
