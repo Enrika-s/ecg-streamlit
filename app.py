@@ -22,7 +22,7 @@ def main():
     .banner {
         width: 100%;
         height: auto;
-        margin-bottom: 20px;
+        margin-bottom: 8px;
     }
     .custom-title {
         font-size: 3em;
@@ -36,7 +36,6 @@ def main():
     .emergency-text .highlight {
         color: red;
         font-weight: bold;
-        text-decoration: underline;
     }
     .disclaimer-container {
         background-color: #ffcccc;
@@ -49,11 +48,6 @@ def main():
     .disclaimer-button-container {
         display: flex;
         justify-content: center;
-    }
-    .highlight-link {
-        color: red;
-        font-weight: bold;
-        text-decoration: underline;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -120,7 +114,7 @@ def main():
                             - Managing stress
 
 
-                            Please note: While our model has a **confidence level of {confidence_score:.2f}%** in your predicted results (read more about what that number means <a href="https://www.capitalheart.sg/what-does-an-abnormal-ecg-mean/" class="highlight-link">here</a>), it does have limitations:
+                            Please note: While our model has a **confidence level of {confidence_score:.2f}%** in your predicted results (read more about what that number means **here**), it does have limitations:
 
                             - This is only one point in time - take multiple recordings to get the bigger picture of your heart function.
                             - This model uses a single or 2-lead ECG input, which allows for more flexible and convenient measurement, but means it is inherently incomplete compared to the clinical standard 12-lead ECG.
@@ -135,11 +129,8 @@ def main():
 
                             This means that your **heart rhythm appears inconsistent in this measurement**, which **may be a sign of heart disease or arrhythmia**.
 
-                            **Your family doctor can refer you for a full ECG assessment, or you can check your local walk-in clinic or hospital emergency room**.
 
-                            **Taking action now can have a meaningful impact on your ability to proactively manage and treat potential heart-related complications - and improve your health in both the short and long term**!
-
-                            **Please note**: While our model has a **confidence level of {confidence_score:.2f}%** in your predicted results (read more about what that number means <a href="https://www.capitalheart.sg/what-does-an-abnormal-ecg-mean/" class="highlight-link">here</a>), it does have limitations:
+                            **Please note**: While our model has a **confidence level of {confidence_score:.2f}%** in your predicted results (read more about what that number means [<span class="highlight-link">here</span>](https://www.capitalheart.sg/what-does-an-abnormal-ecg-mean/)), it does have limitations:
 
                             - This is only one point in time - take multiple recordings to get the bigger picture of your heart function.
                             - This model uses a single or 2-lead ECG input, which allows for more flexible and convenient measurement, but means it is inherently incomplete compared to the clinical standard 12-lead ECG.
