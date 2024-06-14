@@ -129,9 +129,6 @@ def main():
 
                             This means that your **heart rhythm appears inconsistent in this measurement**, which **may be a sign of heart disease or arrhythmia**.
 
-                            **Your family doctor can refer you for a full ECG assessment, or you can check your local walk-in clinic or hospital emergency room**.
-
-                            **Taking action now can have a meaningful impact on your ability to proactively manage and treat potential heart-related complications - and improve your health in both the short and long term**!
 
                             **Please note**: While our model has a **confidence level of {confidence_score:.2f}%** in your predicted results (read more about what that number means here), it does have limitations:
 
