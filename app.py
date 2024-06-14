@@ -119,7 +119,7 @@ def main():
                             - Managing stress
 
 
-                            Please note: While our model has a **confidence level of {confidence_score:.2f}%** in your predicted results (read more about what that number means **here**), it does have limitations:
+                            Please note: While our model has a **confidence level of {confidence_score:.2f}%** in your predicted results (read more about what that number means <a class="highlight-link" href="https://www.census.gov/programs-surveys/saipe/guidance/confidence-intervals.html#:~:text=What%20is%20a%20confidence%20interval,the%20uncertainty%20surrounding%20an%20estimate">here</a>), it does have limitations:
 
                             - This is only one point in time - take multiple recordings to get the bigger picture of your heart function.
                             - This model uses a single or 2-lead ECG input, which allows for more flexible and convenient measurement, but means it is inherently incomplete compared to the clinical standard 12-lead ECG.
